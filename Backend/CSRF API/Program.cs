@@ -28,7 +28,12 @@ builder.Services.AddCors(options =>
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    // Configurar para minimizar schemas mostrados
+    options.CustomSchemaIds(type => type.Name);
+    options.SupportNonNullableReferenceTypes();
+});
 
 var app = builder.Build();
 
@@ -36,7 +41,11 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.DefaultModelsExpandDepth(-1); // Ocultar modelos/schemas por defecto
+        c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.List);
+    });
 }
 
 app.UseHttpsRedirection();
@@ -47,5 +56,8 @@ app.UseCors("AllowFrontend");
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Configurar puerto 5029 para que coincida con el script de inicio
+app.Urls.Add("http://localhost:5029");
 
 app.Run();
