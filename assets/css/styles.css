@@ -1,0 +1,695 @@
+/* Variables de color - Paleta */
+:root {
+    /* Colores base */
+    --color-bg-primary: #1a1a1a;
+    --color-bg-secondary: #2d2d2d;
+    --color-bg-card: #2d2d2d;
+    --color-bg-card-rgb: 45, 45, 45;
+    --color-bg-header: rgba(45, 45, 45, 0.9);
+    
+    /* Color dorado/amarillo principal */
+    --color-primary: #f5c542;
+    --color-primary-light: #ffdd57;
+    --color-primary-rgb: 245, 197, 66;
+    
+    /* Colores de texto */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cccccc;
+    --color-text-muted: #888888;
+    --color-text-dark: #1a1a1a;
+    
+    /* Colores de estado */
+    --color-success: #4ecdc4;
+    --color-success-rgb: 76, 175, 80;
+    --color-success-light: #81c784;
+    
+    --color-error: #ff6b6b;
+    --color-error-rgb: 220, 53, 69;
+    
+    --color-positive: #4ecdc4;
+    --color-negative: #ff6b6b;
+    
+    /* Opacidades y transparencias */
+    --opacity-card: 0.8;
+    --opacity-header: 0.9;
+    --opacity-border: 0.2;
+    --opacity-border-hover: 0.5;
+    --opacity-input-bg: 0.05;
+    --opacity-input-bg-focus: 0.08;
+    --opacity-input-border: 0.1;
+    --opacity-button-bg: 0.1;
+    --opacity-button-bg-hover: 0.2;
+    --opacity-shadow-light: 0.2;
+    --opacity-shadow-medium: 0.3;
+    --opacity-shadow-strong: 0.5;
+    --opacity-error-bg: 0.2;
+    --opacity-error-border: 0.5;
+    --opacity-success-bg: 0.2;
+    --opacity-success-border: 0.5;
+    --opacity-primary-shadow: 0.1;
+    --opacity-primary-shadow-hover: 0.3;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+    min-height: 100vh;
+    color: var(--color-text-primary);
+}
+
+/* Body centrado para página de login */
+body.login-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Body normal para dashboard */
+body.dashboard-page {
+    padding-bottom: 40px;
+}
+
+/* Bloque: Logo */
+.logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 40px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Bloque: Card (Login y otros) */
+.card {
+    background: rgba(var(--color-bg-card-rgb), var(--opacity-card));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--color-primary-rgb), var(--opacity-border));
+    border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, var(--opacity-shadow-medium));
+}
+
+.card--login {
+    width: 100%;
+    max-width: 420px;
+}
+
+.card--balance {
+    margin-bottom: 30px;
+}
+
+.card--transfer {
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.card--transactions {
+    padding: 30px;
+}
+
+/* Bloque: Login Card (mantener compatibilidad) */
+.login-card {
+    background: rgba(var(--color-bg-card-rgb), var(--opacity-card));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--color-primary-rgb), var(--opacity-border));
+    border-radius: 12px;
+    padding: 40px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, var(--opacity-shadow-medium));
+}
+
+/* Bloque: Welcome Text */
+.welcome-text {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--color-text-primary);
+}
+
+/* Bloque: Form Group */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group--no-margin {
+    margin-bottom: 0;
+}
+
+.form-group--full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group__label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.form-group__input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, var(--opacity-input-bg));
+    border: 1px solid rgba(255, 255, 255, var(--opacity-input-border));
+    border-radius: 8px;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.form-group__input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, var(--opacity-input-bg-focus));
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), var(--opacity-primary-shadow));
+}
+
+.form-group__input::placeholder {
+    color: var(--color-text-muted);
+}
+
+/* Compatibilidad con estilos antiguos */
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, var(--opacity-input-bg));
+    border: 1px solid rgba(255, 255, 255, var(--opacity-input-border));
+    border-radius: 8px;
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, var(--opacity-input-bg-focus));
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), var(--opacity-primary-shadow));
+}
+
+.form-group input::placeholder {
+    color: var(--color-text-muted);
+}
+
+/* Bloque: Botón */
+.btn {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 8px;
+    color: var(--color-text-dark);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), var(--opacity-shadow-medium));
+}
+
+.btn--login {
+    margin-top: 10px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+}
+
+.btn--login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), var(--opacity-shadow-strong));
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+}
+
+.btn--login:active {
+    transform: translateY(0);
+}
+
+.btn--transfer {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+}
+
+.btn--transfer:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), var(--opacity-shadow-strong));
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+}
+
+.btn--logout {
+    width: auto;
+    background: rgba(255, 255, 255, var(--opacity-button-bg));
+    border: 1px solid rgba(255, 255, 255, var(--opacity-button-bg-hover));
+    color: var(--color-text-primary);
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    box-shadow: none;
+}
+
+.btn--logout:hover {
+    background: rgba(255, 255, 255, var(--opacity-button-bg-hover));
+    border-color: rgba(var(--color-primary-rgb), var(--opacity-border-hover));
+    transform: none;
+}
+
+/* Compatibilidad con estilos antiguos */
+.login-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    border: none;
+    border-radius: 8px;
+    color: var(--color-text-dark);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+    box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), var(--opacity-shadow-medium));
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), var(--opacity-shadow-strong));
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.transfer-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    border: none;
+    border-radius: 8px;
+    color: var(--color-text-dark);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(var(--color-primary-rgb), var(--opacity-shadow-medium));
+}
+
+.transfer-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(var(--color-primary-rgb), var(--opacity-shadow-strong));
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-primary) 100%);
+}
+
+.logout-btn {
+    background: rgba(255, 255, 255, var(--opacity-button-bg));
+    border: 1px solid rgba(255, 255, 255, var(--opacity-button-bg-hover));
+    color: var(--color-text-primary);
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout-btn:hover {
+    background: rgba(255, 255, 255, var(--opacity-button-bg-hover));
+    border-color: rgba(var(--color-primary-rgb), var(--opacity-border-hover));
+}
+
+/* Bloque: Footer Text */
+.footer-text {
+    text-align: center;
+    margin-top: 30px;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* Bloque: Mensaje de Error */
+.error-message {
+    background: rgba(var(--color-error-rgb), var(--opacity-error-bg));
+    border: 1px solid rgba(var(--color-error-rgb), var(--opacity-error-border));
+    color: var(--color-error);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    display: none;
+}
+
+.error-message--show {
+    display: block;
+}
+
+/* Compatibilidad */
+.error-message.show {
+    display: block;
+}
+
+/* Bloque: Header */
+.header {
+    background: var(--color-bg-header);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(var(--color-primary-rgb), var(--opacity-border));
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, var(--opacity-shadow-light));
+}
+
+.header__logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header__right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header__greeting {
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Compatibilidad */
+.logo-header {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.greeting {
+    color: var(--color-text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Bloque: Container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Bloque: Balance Card */
+.balance-card {
+    background: rgba(var(--color-bg-card-rgb), var(--opacity-card));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--color-primary-rgb), var(--opacity-border));
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, var(--opacity-shadow-medium));
+}
+
+.balance-card__title {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 8px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.balance-card__number {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.balance-card__amount {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.balance-card__currency {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-weight: 400;
+}
+
+/* Compatibilidad */
+.account-title {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 8px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.account-number {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: 30px;
+    font-weight: 300;
+}
+
+.balance-amount {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.balance-currency {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    font-weight: 400;
+}
+
+/* Bloque: Transfer Section */
+.transfer-section {
+    background: rgba(var(--color-bg-card-rgb), var(--opacity-card));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--color-primary-rgb), var(--opacity-border));
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, var(--opacity-shadow-medium));
+}
+
+/* Bloque: Section Title */
+.section-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 20px;
+}
+
+/* Bloque: Form Row */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+/* Bloque: Transactions Section */
+.transactions-section {
+    background: rgba(var(--color-bg-card-rgb), var(--opacity-card));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(var(--color-primary-rgb), var(--opacity-border));
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, var(--opacity-shadow-medium));
+}
+
+/* Bloque: Transactions List */
+.transactions-list {
+    list-style: none;
+}
+
+/* Bloque: Transaction Item */
+.transaction-item {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, var(--opacity-input-border));
+    font-size: 0.9rem;
+}
+
+.transaction-item:last-child {
+    border-bottom: none;
+}
+
+.transaction-item__date {
+    color: var(--color-text-muted);
+    font-weight: 300;
+}
+
+.transaction-item__concept {
+    color: var(--color-text-secondary);
+    font-weight: 400;
+}
+
+.transaction-item__amount {
+    text-align: right;
+    font-weight: 500;
+}
+
+.transaction-item__amount--positive {
+    color: var(--color-positive);
+}
+
+.transaction-item__amount--negative {
+    color: var(--color-negative);
+}
+
+/* Compatibilidad */
+.transaction-date {
+    color: var(--color-text-muted);
+    font-weight: 300;
+}
+
+.transaction-concept {
+    color: var(--color-text-secondary);
+    font-weight: 400;
+}
+
+.transaction-amount {
+    text-align: right;
+    font-weight: 500;
+}
+
+.transaction-amount.positive {
+    color: var(--color-positive);
+}
+
+.transaction-amount.negative {
+    color: var(--color-negative);
+}
+
+/* Bloque: Alert Success */
+.alert-success {
+    background: rgba(var(--color-success-rgb), var(--opacity-success-bg));
+    border: 1px solid rgba(var(--color-success-rgb), var(--opacity-success-border));
+    color: var(--color-success-light);
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    text-align: center;
+    display: none;
+}
+
+.alert-success--show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Compatibilidad */
+.alert-success.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+    .login-card {
+        padding: 30px 20px;
+    }
+
+    .logo {
+        font-size: 2rem;
+        margin-bottom: 30px;
+    }
+
+    .welcome-text {
+        font-size: 1.3rem;
+    }
+
+    .header {
+        padding: 15px 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .header__right,
+    .header-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .transaction-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .transaction-item__amount,
+    .transaction-amount {
+        text-align: left;
+    }
+
+    .balance-card__amount,
+    .balance-amount {
+        font-size: 36px;
+    }
+
+    .balance-card,
+    .transfer-section,
+    .transactions-section {
+        padding: 25px 20px;
+    }
+}
+
